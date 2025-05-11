@@ -28,7 +28,6 @@ import {
   getEntryPoint,
 } from "@alchemy/aa-core";
 import { http } from "viem";
-import initCardanoWasm from '@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib';
 
 // ECPair 初期化
 const ECPair = ECPairFactory(ecc);
@@ -56,15 +55,6 @@ interface FeeEstimationResult {
     feeRate?: number;
     size?: number;
   };
-}
-
-// WASMの初期化
-let cardanoWasmLoaded = false;
-async function ensureCardanoWasmLoaded() {
-  if (!cardanoWasmLoaded) {
-    await initCardanoWasm('/wasm/cardano_serialization_lib_bg.wasm');
-    cardanoWasmLoaded = true;
-  }
 }
 
 /**
@@ -199,7 +189,6 @@ export async function sendTx(tx: Transaction): Promise<string> {
 
     if (chain.kind === 'cardano') {
       // Cardanoのトランザクション送信処理
-      await ensureCardanoWasmLoaded();
       throw new Error('Cardano transaction sending is not implemented yet');
     }
 

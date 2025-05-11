@@ -14,6 +14,7 @@ import {
   StakeCredential,
   NetworkInfo,
 } from '@emurgo/cardano-serialization-lib-browser'
+import initCardanoWasm from '@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib'
 
 const ECPair = ECPairFactory(ecc)
 const bip32 = BIP32Factory(ecc)
@@ -69,9 +70,18 @@ async function ensureSafeL2(
   }
 }
 
+let cardanoWasmLoaded = false;
+async function ensureCardanoWasmLoaded() {
+  if (!cardanoWasmLoaded) {
+    await initCardanoWasm('/wasm/cardano_serialization_lib_bg.wasm');
+    cardanoWasmLoaded = true;
+  }
+}
+
 export async function generateWallets(
   passphrase: string
 ): Promise<WalletInfo[]> {
+  await ensureCardanoWasmLoaded();
   console.log('Starting wallet generation...')
   const seed = Buffer.from(await seedFromPassphrase(passphrase))
   const master = bip32.fromSeed(seed)

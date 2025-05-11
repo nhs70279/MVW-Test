@@ -29,6 +29,10 @@ import {
 } from "@alchemy/aa-core";
 import { http } from "viem";
 
+if (typeof window === 'undefined') {
+  throw new Error('sendTx.ts must only be used on the client side');
+}
+
 // ECPair 初期化
 const ECPair = ECPairFactory(ecc);
 

@@ -15,6 +15,10 @@ import {
   NetworkInfo,
 } from '@emurgo/cardano-serialization-lib-browser'
 
+if (typeof window === 'undefined') {
+  throw new Error('generateWallets.ts must only be used on the client side');
+}
+
 const ECPair = ECPairFactory(ecc)
 const bip32 = BIP32Factory(ecc)
 // 32ビット整数の範囲内で正しく動作するように修正

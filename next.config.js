@@ -13,5 +13,13 @@ const nextConfig = {
     fallback: { fs:false, path:false, os:false }
   },
   devIndicators: false,
+  async rewrites() {
+    return [
+      {
+        source: '/_next/static/wasm/:path*',
+        destination: '/wasm/:path*',
+      },
+    ];
+  },
 }
 module.exports = nextConfig

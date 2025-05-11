@@ -27,7 +27,7 @@ export default function SlideToConfirmModal({ message, onConfirm, onCancel }: Pr
 
     // クランプ後の x 座標を計算
     const maxX = trackWidth - handleWidth
-    const x = Math.min(Math.max(percent * trackWidth, 0), maxX)
+    const x = Math.min(Math.max(percent * maxX, 0), maxX)
 
     handle.style.left = `${x}px`
     setValue(percent * 100)
@@ -64,6 +64,7 @@ export default function SlideToConfirmModal({ message, onConfirm, onCancel }: Pr
             onInput={handleInput}
             onMouseUp={handleMouseUp}
             onTouchEnd={handleMouseUp}
+            onTouchMove={handleInput}
           />
           <div className={styles.caption}>Slide to confirm</div>
           <div ref={handleRef} className={styles.handle}>

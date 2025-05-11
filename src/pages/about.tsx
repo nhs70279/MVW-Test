@@ -34,12 +34,43 @@ const AboutPage: React.FC = () => {
   return (
     <div
       className="min-h-screen flex items-center justify-center font-sans"
-      style={{ background: 'radial-gradient(circle at center, #FFFFFF 0%, #EDEDED 100%)', height: '120%', padding: '20px 540px 100px 540px' }}
+      style={{
+        background: 'radial-gradient(circle at center, #FFFFFF 0%, #EDEDED 100%)',
+        height: '120%',
+        padding: '20px 540px 100px 540px',
+      }}
     >
       <Head>
         <title>About MVW</title>
         <meta name="description" content="Learn about MVW - A modern multi-chain wallet solution" />
       </Head>
+      <style jsx>{`
+        @media (max-width: 600px) {
+          div.min-h-screen {
+            padding: 0 2vw 40px 2vw !important;
+          }
+          h1 {
+            font-size: 2.2rem !important;
+            height: 44px !important;
+          }
+          p {
+            font-size: 1rem !important;
+            margin-bottom: 2rem !important;
+          }
+          .bg-white\/80, .bg-white\/90 {
+            padding: 1rem !important;
+          }
+          .grid {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+          }
+          button {
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 2rem !important;
+          }
+        }
+      `}</style>
       <main className="w-full max-w-4xl mx-auto px-4 py-12 md:py-20">
         <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl p-6 md:p-12">
         <h1 style={{ fontSize: '6rem', marginBottom: '6px',height: '99px' }}>

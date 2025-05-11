@@ -245,3 +245,38 @@
   display:flex;gap:6px;align-items:center;
 }
 .sendBtn:hover{background:#ddd;}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding-bottom: 40px;
+  }
+  .form {
+    min-width: unset;
+    width: 95vw;
+    max-width: 400px;
+    padding: 0 2vw;
+  }
+  .afterWrap {
+    min-width: unset;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+  .side {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  .assets {
+    max-width: 100%;
+  }
+  .card {
+    padding: 1rem 0.8rem 1.2rem 0.8rem;
+  }
+  .logo {
+    font-size: 3rem;
+    height: 50px;
+  }
+  .header {
+    margin-bottom: 1.2rem;
+  }
+}

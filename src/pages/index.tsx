@@ -11,8 +11,35 @@ export default function Home() {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
+        minHeight: '100vh',
+        padding: '0 10px',
       }}
     >
+      <style jsx>{`
+        @media (max-width: 600px) {
+          h1 {
+            font-size: 2.2rem !important;
+            height: 44px !important;
+          }
+          p {
+            font-size: 1rem !important;
+            margin-bottom: 2rem !important;
+          }
+          .bg-radial {
+            padding: 0 2vw;
+          }
+          div[style*='display: flex'][style*='gap: 1rem'] {
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+            width: 100%;
+          }
+          a {
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+          }
+        }
+      `}</style>
       {/* ヘッダ右上に About リンク */}
       {/*<header style={{ position: 'absolute', top: 20, right: 20 }}>
         <Link

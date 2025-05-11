@@ -39,3 +39,21 @@
   width: 16px;
   height: 16px;
 }
+
+@media (max-width: 600px) {
+  .modal {
+    padding: 18px;
+    max-width: 98vw;
+    min-width: unset;
+  }
+  .addr {
+    width: 90vw;
+    min-width: unset;
+    max-width: 98vw;
+    font-size: 11px;
+    height: auto;
+  }
+  .title {
+    font-size: 17px;
+  }
+}

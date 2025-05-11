@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import styles from './SendReceiveModal.module.css'
-import { sendTx, estimateFee } from '../utils/sendTx'
 import { fetchAssets } from '../utils/getBalances'
 import { ChainConfig } from '@/config/chains'
 import { PublicKey as SolPubKey } from '@solana/web3.js'
@@ -67,6 +66,7 @@ export default function SendReceiveModal({
     let cancelled = false
     ;(async () => {
       try {
+        const { sendTx, estimateFee } = await import('../utils/sendTx')
         const dummySolAddress = '11111111111111111111111111111111';
         const toForFee = (chain.kind === 'solana' && !to)
           ? dummySolAddress
@@ -137,6 +137,7 @@ export default function SendReceiveModal({
     setLoading(true)
     setErr(null)
     try {
+      const { sendTx } = await import('../utils/sendTx')
       const hash = await sendTx({
         chain,
         from: address,

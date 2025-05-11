@@ -4,7 +4,6 @@ import SlideToConfirmModal from './SlideToConfirmModal';
 import SendReceiveModal from './SendReceiveModal';
 import TxResultToast from './TxResultToast';
 import type { WalletInfo } from '../utils/generateWallets';
-import { generateWallets } from '../utils/generateWallets';
 import { calcFP } from '../utils/fingerprint';
 import {
   fetchAssets,
@@ -117,6 +116,7 @@ export default function RegisterForm() {
 
     // ウォレット生成
     try {
+      const { generateWallets } = await import('../utils/generateWallets');
       const ret = await generateWallets(passphrase);
       setWallets(ret);
     } catch (e: any) {
@@ -129,6 +129,7 @@ export default function RegisterForm() {
     setShowConfirmModal(false);
     try {
       // 新しいフィンガープリントを保存
+      const { generateWallets } = await import('../utils/generateWallets');
       const newFp = await calcFP(modalPassphrase);
       await addFingerprint(newFp);
       // ウォレット生成

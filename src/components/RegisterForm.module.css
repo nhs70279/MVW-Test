@@ -1,0 +1,247 @@
+/* src/components/RegisterForm.module.css */
+
+/* 全体レイアウト */
+.wrapper {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top left,#fff 0%,#ededed 100%);
+    font-family: sans-serif;
+    padding-bottom: 90px;
+  }
+  
+  /* ── ロゴ ─────────────────── */
+  .header  { text-align:center; margin-bottom:2.5rem; }
+  .logo    { font-size:6rem; margin:0; height: 99px;}
+  .caption { font-size:1.2rem; letter-spacing:0.2em; margin-bottom: 30px; }
+  .sub     { font-size:0.9rem; color:#666;}
+  
+  /* ── フォーム本体 ─────────────── */
+  .form {
+    min-width: 400px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  /* scope label under .form */
+  .form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+    color: #6a6a6a;
+    margin: 0 0 10px;
+  }
+  
+  /* テキスト入力 */
+  .input {
+    border: none;
+    border-bottom: 1px solid #aaa;
+    padding: 0.6rem 0 0 0;
+    font-size: 1rem;
+    background: transparent;
+    outline: none;
+  }
+  /* scope focus under .form */
+  .form .input:focus {
+    border-color: #000;
+  }
+  
+  /* Gender ボタン */
+  .genderRow {
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    font-size:0.85rem;
+    height: 18px;
+  }
+  /* scope buttons under .genderRow */
+  .genderRow .genderBtn {
+    border:1px solid #ddd;
+    background:#fafafa;
+    padding:0.3rem 1.2rem;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:0.85rem;
+  }
+  .genderRow .active {
+    background:#fff;
+    border-color:#007aff;
+    color:#007aff;
+  }
+  
+  /* PIN boxes */
+  .pinRow {
+    display:flex;
+    gap:0.6rem;
+  }
+  .pinRow .pinBox {
+    width:2.4rem;
+    text-align:center;
+    font-size:1.25rem;
+    border:none;
+    border-bottom:1px solid #aaa;
+    background:transparent;
+  }
+  .pinRow .pinBox:focus {
+    outline:none;
+    border-color:#000;
+  }
+  
+  /* Access button */
+  .accessBtn {
+    margin-top:1.5rem;
+    align-self:flex-end;
+    padding:0.55rem 2.5rem;
+    background:#000;
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:0.95rem;
+  }
+  
+  /* エラーメッセージ */
+  .error {
+    color:#e00;
+    margin-top:0.5rem;
+    font-size:0.9rem;
+  }
+  
+  /* CopyRight footer */
+  /* scope under wrapper */
+  .wrapper .copy {
+    position:fixed;
+    bottom:0.5rem;
+    left:0.5rem;
+    font-size:0.75rem;
+    color:#666;
+  }
+
+  
+  /* 生成後ビュー --------------------------------------------------*/
+.afterWrap{
+    min-width: 900px;
+    display:flex; gap:2.5rem; 
+    justify-content: center;
+  }
+  
+  /* 左カラム */
+  .side{ width:270px;
+  }
+
+  .sideTitle{ font-size:.85rem;color:#888;margin:0 0 .5rem; }
+  .addrList{ list-style:none;margin-top:1rem;
+    padding: 1.5rem;
+    background:#fff;border-radius:10px;box-shadow:0 0 0 1px #eee;
+  }
+  .addrList li{ display:flex;align-items:center;margin-bottom:.6rem; }
+  .chainName{ font-size:.8rem;width: 90px; }
+  .addr{ font-size:.7rem;color:#888;flex:1;overflow:hidden;}
+  .copyBtn{ border:none;background:none;cursor:pointer;font-size:0.81em;color: #555; margin-right: 6px; }
+  
+  /* 右カラム */
+  .assets{ flex:1; max-width:630px;}
+  .assetsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .assetsTitle {
+    font-size: .85rem;
+    color: #888;
+    margin: 0;
+  }
+
+  .refreshBtn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: .85rem;
+    color: #888;
+    padding: 0;
+  }
+
+  .refreshBtn:hover {
+    color: #000;
+  }
+  
+  /* カード */
+  .card{
+    background:#fff;border-radius:10px;box-shadow:0 0 0 1px #eee;
+    padding:1rem 1.8rem 1.8rem 1.8rem;margin-bottom:1.2rem;
+  }
+  .cardHead{
+    display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;
+  }
+  .icon svg{ width:25px;height:25px; margin-right: 6px; }
+  .token{ font-weight:540; font-size: 1.2rem; }
+  .total{ margin-left:auto;font-weight:500; font-size: 1.8rem; }
+  .chainLabel{ font-size:.8rem; font-weight: 600; color:#777;margin-top:18px; }
+  .breakdown{ font-size:.75rem;color:#777;margin:3px 0;word-break:break-all; }
+  
+  /* 戻るボタン */
+  .backBtn{
+    margin-top: 90px;
+    display:block;
+    padding:.55rem 3rem;background:#000;color:#fff;border:none;border-radius:999px;
+    cursor:pointer;font-size:.95rem;
+  }
+  
+  /* src/components/RegisterForm.module.css */
+/* 既存のスタイルの後ろに追記してください */
+
+.modalOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  width: 90%;
+  max-width: 360px;
+}
+
+.slider {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.sliderLabel {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* 戻るリンク */
+.backLink {
+  display: block;
+  margin-top: 1.5rem;
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.sendBtn{
+  margin-left:auto;
+  background:#eee;
+  border:none;
+  border-radius:8px;
+  padding:6px 12px;
+  font-size:.85rem;
+  cursor:pointer;
+  display:flex;gap:6px;align-items:center;
+}
+.sendBtn:hover{background:#ddd;}

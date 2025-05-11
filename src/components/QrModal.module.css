@@ -1,0 +1,41 @@
+.backdrop{position:fixed;inset:0;background:#0007;display:flex;align-items:center;justify-content:center;z-index:999;}
+.modal{background:#fff;border-radius:8px;padding:24px;text-align:center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 45px;}
+.title{margin:0 0 36px;font-size:21px}
+.canvas{border:none;  justify-content: center;}
+.addr{font-size:12px;word-break:break-all;margin:0 0 20px; color: #555;width: 360px; height: 50px;}
+.closeBtn{margin-top:8px;padding:4px 12px;border:none;background:#000;color:#fff;border-radius:4px;cursor:pointer;}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  background: #f5f5f5;
+}
+
+.tab.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.tab svg {
+  width: 16px;
+  height: 16px;
+}

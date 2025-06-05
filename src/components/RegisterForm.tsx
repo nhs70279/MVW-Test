@@ -53,7 +53,7 @@ export default function RegisterForm() {
   const [pin, setPin] = useState('');
   const [country, setCountry] = useState('');
   const [pref, setPref] = useState('');
-  const [color, setColor] = useState<'white'|'black'|'grey'|'fulcolor'|''>('');
+  const [color, setColor] = useState<'white'|'black'|'grey'|'fullcolor'|''>('');
 
   // ── ウォレット＋資産 ──
   const [wallets, setWallets] = useState<WalletInfo[]|null>(null);
@@ -216,12 +216,12 @@ export default function RegisterForm() {
         </div>
         <div className={styles.genderRow}>
           <span>Your Tone</span>
-          {(['white','black','grey','fulcolor'] as const).map(c=>(
+          {(['white','black','grey','fullcolor'] as const).map(c=>(
             <button key={c} type="button"
               className={`${styles.genderBtn} ${color===c?styles.active:''}`}
               onClick={()=>setColor(c)}
             >
-              {c==='fulcolor'?'Full Color':c.charAt(0).toUpperCase()+c.slice(1)}
+              {c==='fullcolor'?'Full Color':c.charAt(0).toUpperCase()+c.slice(1)}
             </button>
           ))}
         </div>

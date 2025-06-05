@@ -95,16 +95,16 @@ export async function fetchAssets(
       { staticNetwork: Network.from(chain.chainId) }
     );
 
-    // ネイティブ残高（ETH or WLD）の取得 → ETHのみ
+    // ネイティブ残高の取得
     const nativeBalance = await provider.getBalance(address);
     const nativeBalanceFormatted = new Decimal(nativeBalance.toString())
       .dividedBy(Decimal.pow(10, 18))
       .toFixed(18);
-    
+
     out.push({
       chain,
       balance: nativeBalanceFormatted,
-      symbol: 'ETH',
+      symbol: chain.nativeCurrency.symbol,
     });
 
     // ERC-20トークンの残高取得
@@ -181,6 +181,24 @@ export async function fetchAssets(
   return [];
 }
 
+// 通貨記号から表示用の桁数を取得
+function getDecimals(sym: string): number {
+  const map: Record<string, number> = {
+    ETH: 18,
+    WETH: 18,
+    BNB: 18,
+    WBNB: 18,
+    MATIC: 18,
+    WMATIC: 18,
+    BTC: 8,
+    BTCB: 18,
+    WBTC: 8,
+    SOL: 9,
+    ADA: 6,
+  };
+  return map[sym] ?? 8;
+}
+
 // ---------------------------------------------------------------
 // ここから fetchPortfolioByAsset を必ず export
 // ---------------------------------------------------------------
@@ -232,10 +250,7 @@ export async function fetchPortfolioByAsset(
       // 0より大きい値は全て表示
       if (sum.greaterThan(0)) {
         // 小数点以下の桁数を適切に設定
-        const decimals = sym === 'ETH' ? 18 : 
-                        sym === 'BTC' || sym === 'WBTC' ? 8 :
-                        sym === 'SOL' ? 9 :
-                        sym === 'ADA' ? 6 : 8;
+        const decimals = getDecimals(sym);
         
         breakdown[chainData.chainName] = sum.toFixed(decimals);
         total = total.plus(sum);
@@ -245,10 +260,7 @@ export async function fetchPortfolioByAsset(
     // 0より大きい値は全て表示
     if (total.greaterThan(0)) {
       // 小数点以下の桁数を適切に設定
-      const decimals = sym === 'ETH' ? 18 : 
-                      sym === 'BTC' || sym === 'WBTC' ? 8 :
-                      sym === 'SOL' ? 9 :
-                      sym === 'ADA' ? 6 : 8;
+      const decimals = getDecimals(sym);
       
       portfolio[sym] = { 
         total: total.toFixed(decimals), 

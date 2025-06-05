@@ -13,3 +13,6 @@ declare module 'ecpair' {
   const factory: any;
   export { factory as ECPairFactory };
 }
+
+// 追加: bs58 を型定義なしで扱えるよう宣言
+declare module 'bs58';

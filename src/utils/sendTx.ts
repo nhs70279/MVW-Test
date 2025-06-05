@@ -18,6 +18,7 @@ import * as Cardano from '@emurgo/cardano-serialization-lib-browser';
 import { payments, Psbt } from 'bitcoinjs-lib';
 import { ECPairFactory } from 'ecpair';
 import * as ecc from 'tiny-secp256k1';
+import bs58 from 'bs58';
 import type { ChainConfig, EvmToken } from '../config/chains';
 import { estimateFee as estimateFeeUtil } from './feeEstimator';
 import {
@@ -179,7 +180,7 @@ export async function sendTx(tx: Transaction): Promise<string> {
 
     if (chain.kind === 'solana') {
       const connection = new Connection(chain.rpc, 'confirmed');
-      const keypair = Keypair.fromSecretKey(new Uint8Array(privKey ? JSON.parse(privKey as string) : []));
+      const keypair = Keypair.fromSecretKey(new Uint8Array(privKey ? bs58.decode(privKey as string) : []));
       const transaction = new SolTx().add(
         SystemProgram.transfer({
           fromPubkey: keypair.publicKey,
